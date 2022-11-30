@@ -18,3 +18,14 @@ const styleSubtitleGray = TextStyle(
   color: pNeutral2,
   fontSize: 14,
 );
+
+const styleSmallText = TextStyle(
+  color: pNeutral2,
+  fontSize: 11,
+);
+
+const styleBigPrice = TextStyle(
+  color: pNeutral3,
+  fontSize: 20,
+  fontWeight: FontWeight.w500,
+);

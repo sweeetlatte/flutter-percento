@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:percento/config/const.dart';
+import 'package:percento/pages/category/widgets/category_body.dart';
 
 class CategoryPage extends StatelessWidget {
   static const routeName = '/category';
@@ -29,6 +30,7 @@ class CategoryPage extends StatelessWidget {
       ),
       body: Container(
         color: pNeutral1,
+        child: const CategoryBody(),
       ),
     );
   }
