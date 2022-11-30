@@ -25,21 +25,33 @@ class _HomeSliderState extends State<HomeSlider> {
       padding: const EdgeInsets.fromLTRB(18, 0, 18, 12),
       child: FutureBuilder(
         future: sliderFuture,
-        initialData: [],
+        initialData: const [],
         builder: (context, asyncData) {
+          var sliderData = [];
+          if (asyncData.hasData) {
+            sliderData = asyncData.data! as List;
+          } else {
+            return const Center(
+              child: Text('No slider to show'),
+            );
+          }
+
           return CarouselSlider(
             options: CarouselOptions(height: 200.0),
-            items: [1, 2, 3, 4, 5].map((i) {
+            items: sliderData.map((i) {
               return Builder(
                 builder: (BuildContext context) {
                   return Container(
-                      width: MediaQuery.of(context).size.width,
-                      margin: EdgeInsets.symmetric(horizontal: 5.0),
-                      decoration: BoxDecoration(color: Colors.amber),
-                      child: Text(
-                        'text $i',
-                        style: TextStyle(fontSize: 16.0),
-                      ));
+                    width: MediaQuery.of(context).size.width,
+                    margin: const EdgeInsets.symmetric(horizontal: 11.0),
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(9)),
+                        image: DecorationImage(
+                          image: NetworkImage(i.image),
+                          fit: BoxFit.cover,
+                        )),
+                  );
                 },
               );
             }).toList(),
