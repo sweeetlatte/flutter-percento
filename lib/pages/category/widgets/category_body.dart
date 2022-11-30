@@ -1,111 +1,154 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:percento/config/const.dart';
+import 'package:percento/providers/category.dart';
 
-class CategoryBody extends StatelessWidget {
+class CategoryBody extends StatefulWidget {
   const CategoryBody({super.key});
 
   @override
+  State<CategoryBody> createState() => _CategoryBodyState();
+}
+
+class _CategoryBodyState extends State<CategoryBody> {
+  late Future productInCategoryFuture;
+
+  @override
+  void didChangeDependencies() {
+    final Map<String, dynamic> arg =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+
+    productInCategoryFuture =
+        Provider.of<CategoryProvider>(context).getProductsCategory(arg['id']);
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      padding: const EdgeInsets.fromLTRB(18, 10, 18, 0),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 24,
-        mainAxisSpacing: 24,
-        mainAxisExtent: 240,
-      ),
-      itemCount: 9,
-      itemBuilder: (BuildContext context, int index) {
-        return InkWell(
-          // onTap: () {
-          //   Navigator.pushNamed(
-          //     context,
-          //     CategoryPage.routeName,
-          //     arguments: {
-          //       "title": categoryItem[index].name,
-          //       "categoryId": categoryItem[index].id,
-          //     },
-          //   );
-          // },
-          child: Container(
-            padding: const EdgeInsets.all(11),
-            decoration: BoxDecoration(
-              color: pNeutral0,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Column(
-              children: [
-                Expanded(
-                    flex: 4,
-                    child: Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(3),
-                        image: const DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(
-                              'https://images.unsplash.com/photo-1547241850-eb8a8754f95c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80'),
-                        ),
-                      ),
-                    )),
-                Expanded(
-                    flex: 3,
-                    child: Container(
-                      padding: const EdgeInsets.only(top: 10),
-                      alignment: Alignment.topLeft,
-                      child: Column(
-                        children: [
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            child: const Text(
-                              'Product nameeee',
-                              textAlign: TextAlign.left,
-                              maxLines: 1,
-                              style: styleTitle,
+    return FutureBuilder(
+      initialData: const [],
+      future: productInCategoryFuture,
+      builder: (context, asyncData) {
+        List data = [];
+        if (asyncData.hasData) {
+          data = asyncData.data as List;
+        } else {
+          return const Center(child: Text('No product to show'));
+        }
+
+        return GridView.builder(
+          padding: const EdgeInsets.fromLTRB(18, 10, 18, 18),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 24,
+            mainAxisSpacing: 24,
+            mainAxisExtent: 240,
+          ),
+          itemCount: data.length,
+          itemBuilder: (BuildContext context, int index) {
+            return InkWell(
+              // onTap: () {
+              //   Navigator.pushNamed(
+              //     context,
+              //     CategoryPage.routeName,
+              //     arguments: {
+              //       "title": categoryItem[index].name,
+              //       "categoryId": categoryItem[index].id,
+              //     },
+              //   );
+              // },
+              child: Container(
+                padding: const EdgeInsets.all(11),
+                decoration: BoxDecoration(
+                  color: pNeutral0,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color.fromRGBO(0, 0, 0, 0.1),
+                      blurRadius: 10,
+                      offset: Offset(4, 8),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    Expanded(
+                        flex: 4,
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(3),
+                            color: pNeutral0,
+                            image: DecorationImage(
+                              fit: BoxFit.contain,
+                              image: NetworkImage(data[index].image),
                             ),
                           ),
-                          Container(
-                            padding: const EdgeInsets.fromLTRB(0, 3, 0, 12),
-                            alignment: Alignment.centerLeft,
-                            child: const Text(
-                              'Preheat the oven to 400 degrees F (200 degrees C). Grease two 9-inch layer pans.\n– In a large mixing bowl, combine flour, 1/3 cup sugar, cocoa, baking powder, baking soda, and salt. Cut in butter until mixture resembles coarse crumbs. Add milk, mixing until just moistened. Spread batter evenly into the prepared layer pans.\n– Bake in the preheated oven for 15 minutes, or until a toothpick inserted in the center comes out clean. Cool.\n– Meanwhile, in a medium mixing bowl, combine strawberries and remaining 1/4 cup sugar. Let mixture stand for 10 minutes.\n– Remove shortcake layers from the pans. Place one layer on a serving plate; cover with 1/2 of the of strawberry mixture and 1/2 of the whipped topping. Place remaining shortcake layer on top, then remaining strawberry mixture and remaining whipped topping. Drizzle chocolate syrup over top.',
-                              textAlign: TextAlign.left,
-                              maxLines: 2,
-                              style: styleSmallText,
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        )),
+                    Expanded(
+                        flex: 3,
+                        child: Container(
+                          padding: const EdgeInsets.only(top: 10),
+                          alignment: Alignment.topLeft,
+                          child: Column(
                             children: [
                               Container(
                                 alignment: Alignment.centerLeft,
-                                child: const Text(
-                                  '\$89.9',
+                                child: Text(
+                                  data[index].name,
                                   textAlign: TextAlign.left,
-                                  maxLines: 2,
-                                  style: styleBigPrice,
+                                  maxLines: 1,
+                                  style: styleTitle,
                                 ),
                               ),
                               Container(
-                                padding: EdgeInsets.all(3),
-                                decoration: BoxDecoration(
-                                  color: pNeutral3,
-                                  borderRadius: BorderRadius.circular(3),
+                                padding: const EdgeInsets.fromLTRB(0, 3, 0, 12),
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  data[index].summary,
+                                  textAlign: TextAlign.left,
+                                  maxLines: 2,
+                                  style: styleSmallText,
                                 ),
-                                child: const Icon(
-                                  Icons.add_rounded,
-                                  color: pNeutral0,
-                                  size: 14,
-                                ),
-                              )
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      NumberFormat.simpleCurrency(
+                                              name: 'VND', decimalDigits: 0)
+                                          .format(data[index].price),
+                                      textAlign: TextAlign.left,
+                                      maxLines: 1,
+                                      style: styleBigPrice,
+                                    ),
+                                  ),
+                                  Container(
+                                    padding: const EdgeInsets.all(3),
+                                    decoration: BoxDecoration(
+                                      color: pNeutral3,
+                                      borderRadius: BorderRadius.circular(3),
+                                    ),
+                                    child: const Icon(
+                                      Icons.add_rounded,
+                                      color: pNeutral0,
+                                      size: 14,
+                                    ),
+                                  )
+                                ],
+                              ),
                             ],
                           ),
-                        ],
-                      ),
-                    )),
-              ],
-            ),
-          ),
+                        )),
+                  ],
+                ),
+              ),
+            );
+          },
         );
       },
     );
