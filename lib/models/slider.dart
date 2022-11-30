@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-class Slider {
+class MySlider {
   int id;
   String name;
   String image;
 
-  Slider({
+  MySlider({
     required this.id,
     required this.name,
     required this.image,
@@ -20,8 +20,8 @@ class Slider {
     };
   }
 
-  factory Slider.fromMap(Map<String, dynamic> map) {
-    return Slider(
+  factory MySlider.fromMap(Map<String, dynamic> map) {
+    return MySlider(
       id: map['id'] as int,
       name: map['name'] as String,
       image: map['image'] as String,
@@ -30,6 +30,6 @@ class Slider {
 
   String toJson() => json.encode(toMap());
 
-  factory Slider.fromJson(String source) =>
-      Slider.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory MySlider.fromJson(String source) =>
+      MySlider.fromMap(json.decode(source) as Map<String, dynamic>);
 }
