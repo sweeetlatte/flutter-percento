@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:percento/config/const.dart';
+import 'package:percento/pages/home/widgets/home_category.dart';
 import 'package:percento/pages/home/widgets/home_slider.dart';
 
 class HomePage extends StatelessWidget {
@@ -14,7 +15,7 @@ class HomePage extends StatelessWidget {
         title: const Text(
           'Percento',
           style: TextStyle(
-              color: pNeutral2,
+              color: pNeutral3,
               fontWeight: FontWeight.w400,
               fontSize: 20,
               letterSpacing: 1),
@@ -24,10 +25,11 @@ class HomePage extends StatelessWidget {
       ),
       body: Container(
         color: pNeutral1,
-        padding: EdgeInsets.only(top: 9),
+        padding: const EdgeInsets.fromLTRB(18, 9, 18, 18),
         child: Column(
-          children: [
+          children: const [
             HomeSlider(),
+            HomeCategory(),
           ],
         ),
       ),

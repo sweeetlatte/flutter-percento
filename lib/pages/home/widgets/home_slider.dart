@@ -22,7 +22,7 @@ class _HomeSliderState extends State<HomeSlider> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(18, 0, 18, 12),
+      padding: const EdgeInsets.only(bottom: 27),
       child: FutureBuilder(
         future: sliderFuture,
         initialData: const [],
