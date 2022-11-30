@@ -6,14 +6,13 @@ class Product {
   String name;
   String image;
   int price;
-  int priceSaleOff;
+  int? priceSaleOff;
   int rating;
   bool special;
   String summary;
   String description;
-  bool isNew;
-  int categoryId;
-
+  bool? isNew;
+  int? categoryId;
   Product({
     required this.id,
     required this.name,
@@ -27,6 +26,8 @@ class Product {
     required this.isNew,
     required this.categoryId,
   });
+
+  
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,18 +51,17 @@ class Product {
       name: map['name'] as String,
       image: map['image'] as String,
       price: map['price'] as int,
-      priceSaleOff: map['priceSaleOff'] as int,
+      priceSaleOff: map['priceSaleOff'] as int?,
       rating: map['rating'] as int,
       special: map['special'] as bool,
       summary: map['summary'] as String,
       description: map['description'] as String,
-      isNew: map['isNew'] as bool,
-      categoryId: map['categoryId'] as int,
+      isNew: map['isNew'] as bool?,
+      categoryId: map['categoryId'] as int?,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory Product.fromJson(String source) =>
-      Product.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Product.fromJson(String source) => Product.fromMap(json.decode(source) as Map<String, dynamic>);
 }

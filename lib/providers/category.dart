@@ -24,15 +24,14 @@ class CategoryProvider extends ChangeNotifier {
   Future<List<Product>> getProductsCategory(int id) async {
     var url =
         'https://apiforlearning.zendvn.com/api/mobile/categories/$id/products';
-    try {
       final response = await http.get(Uri.parse(url));
       final jsonData = jsonDecode(response.body);
 
       List<Product> data = List<Product>.from(jsonData.map(
           (product) => Product.fromJson(jsonEncode(product)))).toList();
+      
+      print(data);
       return data;
-    } catch (e) {
-      return Future.error(e);
-    }
+    
   }
 }

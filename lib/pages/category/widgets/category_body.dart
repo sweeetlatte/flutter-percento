@@ -21,6 +21,7 @@ class _CategoryBodyState extends State<CategoryBody> {
 
     productInCategoryFuture =
         Provider.of<CategoryProvider>(context).getProductsCategory(arg['id']);
+        print('run');
     super.didChangeDependencies();
   }
 
