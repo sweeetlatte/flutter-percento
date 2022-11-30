@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:percento/config/const.dart';
+import 'package:percento/pages/category/category.dart';
 import 'package:percento/providers/category.dart';
 import 'package:provider/provider.dart';
 
@@ -56,28 +57,41 @@ class _HomeCategoryState extends State<HomeCategory> {
               return ListView.separated(
                   scrollDirection: Axis.horizontal,
                   itemBuilder: ((context, index) {
-                    var name = categoryData[index].name[0].toUpperCase() +
-                        categoryData[index].name.substring(1).toLowerCase();
-                    return Column(
-                      children: [
-                        Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            Image(
-                              width: 48,
-                              height: 48,
-                              image: NetworkImage(categoryData[index].image),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 7.0),
-                          child: Text(
-                            name,
-                            style: styleSubtitleBlack,
+                    var categoryName =
+                        categoryData[index].name[0].toUpperCase() +
+                            categoryData[index].name.substring(1).toLowerCase();
+                    return InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          CategoryPage.routeName,
+                          arguments: {
+                            'id': categoryData[index].id,
+                            'name': categoryData[index].name,
+                          },
+                        );
+                      },
+                      child: Column(
+                        children: [
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Image(
+                                width: 48,
+                                height: 48,
+                                image: NetworkImage(categoryData[index].image),
+                              ),
+                            ],
                           ),
-                        ),
-                      ],
+                          Padding(
+                            padding: const EdgeInsets.only(top: 7.0),
+                            child: Text(
+                              categoryName,
+                              style: styleSubtitleBlack,
+                            ),
+                          ),
+                        ],
+                      ),
                     );
                   }),
                   separatorBuilder: (context, index) {
