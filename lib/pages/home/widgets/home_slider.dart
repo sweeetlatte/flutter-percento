@@ -37,11 +37,7 @@ class _HomeSliderState extends State<HomeSlider> {
           }
 
           return CarouselSlider(
-            options: CarouselOptions(
-              height: 200.0,
-              autoPlay: true,
-              autoPlayInterval: const Duration(seconds: 2),
-            ),
+            options: CarouselOptions(height: 200.0),
             items: sliderData.map((i) {
               return Builder(
                 builder: (BuildContext context) {
