@@ -30,44 +30,10 @@ class ProductDetail extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
-                    padding: const EdgeInsets.fromLTRB(16, 70, 18, 9),
-                    color: const Color.fromRGBO(255, 255, 255, 0.8),
-                    width: double.infinity,
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(right: 18),
-                          width: 40,
-                          height: 40,
-                          decoration: const BoxDecoration(
-                              color: Color.fromRGBO(255, 255, 255, 0.5),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: pNeutral2RGBA,
-                                  blurRadius: 1,
-                                  spreadRadius: 1,
-                                  offset: Offset(0, 0),
-                                ),
-                              ],
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(999))),
-                          child: const Icon(
-                            Icons.arrow_back_rounded,
-                            color: pNeutral3,
-                          ),
-                        ),
-                        const Text(
-                          'Product name',
-                          style: styleBigProductName,
-                        ),
-                      ],
-                    ),
-                  ),
                 ],
               ),
               Container(
-                padding: const EdgeInsets.all(18),
+                padding: const EdgeInsets.fromLTRB(18, 18, 18, 90),
                 child: Column(
                   children: [
                     Container(
@@ -82,10 +48,119 @@ class ProductDetail extends StatelessWidget {
                       'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
                       style: styleSmallText,
                     ),
+                    const Text(
+                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
+                      style: styleSmallText,
+                    ),
+                    const Text(
+                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
+                      style: styleSmallText,
+                    ),
+                    const Text(
+                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
+                      style: styleSmallText,
+                    ),
+                    const Text(
+                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
+                      style: styleSmallText,
+                    ),
+                    const Text(
+                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
+                      style: styleSmallText,
+                    ),
+                    const Text(
+                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
+                      style: styleSmallText,
+                    ),
+                    const Text(
+                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
+                      style: styleSmallText,
+                    ),
+                    const Text(
+                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
+                      style: styleSmallText,
+                    ),
+                    const Text(
+                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
+                      style: styleSmallText,
+                    ),
+                    const Text(
+                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
+                      style: styleSmallText,
+                    ),
+                    const Text(
+                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
+                      style: styleSmallText,
+                    ),
+                    const Text(
+                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
+                      style: styleSmallText,
+                    ),
+                    const Text(
+                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
+                      style: styleSmallText,
+                    ),
+                    const Text(
+                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
+                      style: styleSmallText,
+                    ),
+                    const Text(
+                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
+                      style: styleSmallText,
+                    ),
+                    const Text(
+                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
+                      style: styleSmallText,
+                    ),
+                    const Text(
+                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
+                      style: styleSmallText,
+                    ),
                   ],
                 ),
               ),
             ],
+          ),
+        ),
+        Align(
+          alignment: Alignment.topCenter,
+          child: Container(
+            padding: const EdgeInsets.fromLTRB(16, 70, 18, 9),
+            color: const Color.fromRGBO(255, 255, 255, 0.9),
+            width: double.infinity,
+            child: Row(
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.only(right: 18),
+                    width: 40,
+                    height: 40,
+                    decoration: const BoxDecoration(
+                        color: Color.fromRGBO(255, 255, 255, 0.75),
+                        boxShadow: [
+                          BoxShadow(
+                            color: pNeutral2RGBA,
+                            blurRadius: 1,
+                            spreadRadius: 1,
+                            offset: Offset(0, 0),
+                          ),
+                        ],
+                        borderRadius: BorderRadius.all(Radius.circular(999))),
+                    child: const Icon(
+                      Icons.arrow_back_rounded,
+                      color: pNeutral3,
+                    ),
+                  ),
+                ),
+                const Text(
+                  'Product name',
+                  style: styleBigProductName,
+                ),
+              ],
+            ),
           ),
         ),
         Align(
