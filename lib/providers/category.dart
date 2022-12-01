@@ -30,7 +30,6 @@ class CategoryProvider extends ChangeNotifier {
       List<Product> data = List<Product>.from(jsonData.map(
           (product) => Product.fromJson(jsonEncode(product)))).toList();
       
-      print(data);
       return data;
     
   }

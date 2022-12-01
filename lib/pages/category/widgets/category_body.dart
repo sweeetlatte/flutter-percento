@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:percento/pages/product/product.dart';
 import 'package:provider/provider.dart';
 import 'package:percento/config/const.dart';
 import 'package:percento/providers/category.dart';
@@ -21,7 +22,6 @@ class _CategoryBodyState extends State<CategoryBody> {
 
     productInCategoryFuture =
         Provider.of<CategoryProvider>(context).getProductsCategory(arg['id']);
-        print('run');
     super.didChangeDependencies();
   }
 
@@ -49,16 +49,16 @@ class _CategoryBodyState extends State<CategoryBody> {
           itemCount: data.length,
           itemBuilder: (BuildContext context, int index) {
             return InkWell(
-              // onTap: () {
-              //   Navigator.pushNamed(
-              //     context,
-              //     CategoryPage.routeName,
-              //     arguments: {
-              //       "title": categoryItem[index].name,
-              //       "categoryId": categoryItem[index].id,
-              //     },
-              //   );
-              // },
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  ProductDetail.routeName,
+                  // arguments: {
+                  //   "title": categoryItem[index].name,
+                  //   "categoryId": categoryItem[index].id,
+                  // },
+                );
+              },
               child: Container(
                 padding: const EdgeInsets.all(11),
                 decoration: BoxDecoration(
