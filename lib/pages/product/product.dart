@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:percento/config/const.dart';
 
 class ProductDetail extends StatelessWidget {
@@ -7,6 +8,8 @@ class ProductDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final data = ModalRoute.of(context)!.settings.arguments as Map;
+
     return Scaffold(
       body: Stack(children: [
         SingleChildScrollView(
@@ -14,16 +17,16 @@ class ProductDetail extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  SizedBox(
+                  Container(
                     width: double.infinity,
                     height: 450,
+                    padding: const EdgeInsets.fromLTRB(18, 120, 18, 18),
                     child: Flex(
                       direction: Axis.vertical,
-                      children: const [
+                      children: [
                         Expanded(
                           child: Image(
-                            image: NetworkImage(
-                                'https://images.unsplash.com/photo-1504253492562-cbc4dc540fcb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'),
+                            image: NetworkImage(data['image']),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -39,81 +42,13 @@ class ProductDetail extends StatelessWidget {
                     Container(
                       alignment: Alignment.centerLeft,
                       padding: const EdgeInsets.only(bottom: 9),
-                      child: const Text(
-                        '16GB/1TB',
+                      child: Text(
+                        data['summary'],
                         style: styleTitle,
                       ),
                     ),
-                    const Text(
-                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
-                      style: styleSmallText,
-                    ),
-                    const Text(
-                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
-                      style: styleSmallText,
-                    ),
-                    const Text(
-                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
-                      style: styleSmallText,
-                    ),
-                    const Text(
-                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
-                      style: styleSmallText,
-                    ),
-                    const Text(
-                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
-                      style: styleSmallText,
-                    ),
-                    const Text(
-                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
-                      style: styleSmallText,
-                    ),
-                    const Text(
-                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
-                      style: styleSmallText,
-                    ),
-                    const Text(
-                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
-                      style: styleSmallText,
-                    ),
-                    const Text(
-                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
-                      style: styleSmallText,
-                    ),
-                    const Text(
-                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
-                      style: styleSmallText,
-                    ),
-                    const Text(
-                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
-                      style: styleSmallText,
-                    ),
-                    const Text(
-                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
-                      style: styleSmallText,
-                    ),
-                    const Text(
-                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
-                      style: styleSmallText,
-                    ),
-                    const Text(
-                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
-                      style: styleSmallText,
-                    ),
-                    const Text(
-                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
-                      style: styleSmallText,
-                    ),
-                    const Text(
-                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
-                      style: styleSmallText,
-                    ),
-                    const Text(
-                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
-                      style: styleSmallText,
-                    ),
-                    const Text(
-                      'This cheesy, potato-ey casserole is reminiscent of classic loaded potatoes. Potatoes are roasted in a spice mix which packs them with tons of flavor and gives them a beautiful golden coloring.',
+                    Text(
+                      data['description'],
                       style: styleSmallText,
                     ),
                   ],
@@ -139,7 +74,7 @@ class ProductDetail extends StatelessWidget {
                     width: 40,
                     height: 40,
                     decoration: const BoxDecoration(
-                        color: Color.fromRGBO(255, 255, 255, 0.75),
+                        color: Color.fromRGBO(255, 255, 255, 0.98),
                         boxShadow: [
                           BoxShadow(
                             color: pNeutral2RGBA,
@@ -155,8 +90,8 @@ class ProductDetail extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Text(
-                  'Product name',
+                Text(
+                  data['title'],
                   style: styleBigProductName,
                 ),
               ],
@@ -195,10 +130,12 @@ class ProductDetail extends StatelessWidget {
                   Expanded(
                       flex: 1,
                       child: Row(
-                        children: const [
+                        children: [
                           Text(
-                            'đ29,000,000',
-                            style: TextStyle(
+                            NumberFormat.simpleCurrency(
+                                    name: 'VND', decimalDigits: 0)
+                                .format(data['price']),
+                            style: const TextStyle(
                                 fontSize: 16,
                                 color: pNeutral1,
                                 fontWeight: FontWeight.w500),

@@ -53,10 +53,14 @@ class _CategoryBodyState extends State<CategoryBody> {
                 Navigator.pushNamed(
                   context,
                   ProductDetail.routeName,
-                  // arguments: {
-                  //   "title": categoryItem[index].name,
-                  //   "categoryId": categoryItem[index].id,
-                  // },
+                  arguments: {
+                    "title": data[index].name,
+                    "categoryId": data[index].id,
+                    "summary": data[index].summary,
+                    "description": data[index].description,
+                    "price": data[index].price,
+                    "image": data[index].image,
+                  },
                 );
               },
               child: Container(
