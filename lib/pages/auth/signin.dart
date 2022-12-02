@@ -80,7 +80,7 @@ class SignIn extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(0, 9, 0, 9),
                 child: TextField(
                   controller: _passwordController,
-                  // obscureText: true,
+                  obscureText: true,
                   cursorColor: pNeutral2,
                   decoration: const InputDecoration(
                     labelText: 'Password',
