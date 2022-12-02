@@ -1,28 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:percento/config/const.dart';
-import 'package:percento/pages/auth/signup.dart';
-import 'package:percento/providers/auth.dart';
-import 'package:provider/provider.dart';
 
-class SignIn extends StatelessWidget {
-  static const routeName = '/signin';
-  SignIn({super.key});
-
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+class SignUp extends StatelessWidget {
+  static const routeName = '/signup';
+  const SignUp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    void handleSubmit() {
-      final email = _emailController.text;
-      final password = _passwordController.text;
-
-      if (email.isNotEmpty && password.isNotEmpty) {
-        Provider.of<AuthProvider>(context, listen: false)
-            .login(email, password);
-      }
-    }
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
@@ -49,7 +33,7 @@ class SignIn extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.only(bottom: 32),
                 child: Text(
-                  'SIGN IN',
+                  'SIGN UP',
                   style: TextStyle(
                     color: pNeutral3,
                     fontSize: 20,
@@ -57,10 +41,9 @@ class SignIn extends StatelessWidget {
                   ),
                 ),
               ),
-              TextField(
-                controller: _emailController,
+              const TextField(
                 cursorColor: pNeutral2,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Email',
                   labelStyle: TextStyle(color: pNeutral3),
                   focusedBorder: UnderlineInputBorder(
@@ -77,13 +60,12 @@ class SignIn extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 9, 0, 9),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(0, 9, 0, 9),
                 child: TextField(
-                  controller: _passwordController,
                   obscureText: true,
                   cursorColor: pNeutral2,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     labelText: 'Password',
                     labelStyle: TextStyle(color: pNeutral3),
                     focusedBorder: UnderlineInputBorder(
@@ -101,23 +83,38 @@ class SignIn extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                alignment: Alignment.topLeft,
-                padding: const EdgeInsets.only(bottom: 32),
-                child: const Text(
-                  'Forgot password?',
-                  style: styleSmallTextBlack,
+              const Padding(
+                padding: EdgeInsets.only(bottom: 32),
+                child: TextField(
+                  obscureText: true,
+                  cursorColor: pNeutral2,
+                  decoration: InputDecoration(
+                    labelText: 'Confirm password',
+                    labelStyle: TextStyle(color: pNeutral3),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        width: 1,
+                        color: pNeutral3,
+                      ),
+                    ),
+                    errorBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        width: 1,
+                        color: pError,
+                      ),
+                    ),
+                  ),
                 ),
               ),
               ElevatedButton(
-                  onPressed: handleSubmit,
+                  onPressed: () {},
                   style: ElevatedButton.styleFrom(
                       backgroundColor: pNeutral3,
                       elevation: 1,
                       padding: const EdgeInsets.symmetric(
                           vertical: 12, horizontal: 30)),
                   child: const Text(
-                    'SIGN IN',
+                    'SIGN UP',
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                       letterSpacing: 1,
@@ -131,15 +128,15 @@ class SignIn extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  'Not signed up yet? ',
+                  'Already signed up? ',
                   style: styleSmallTextBlack,
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, SignUp.routeName);
+                    Navigator.pop(context);
                   },
                   child: const Text(
-                    'Sign up here',
+                    'Sign in here',
                     style: TextStyle(
                       color: pNeutral3,
                       fontSize: 11,

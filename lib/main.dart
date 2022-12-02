@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:percento/pages/auth/signup.dart';
 import 'package:percento/pages/category/category.dart';
 import 'package:percento/pages/home/home.dart';
 import 'package:percento/pages/product/product.dart';
@@ -19,6 +20,7 @@ void main(List<String> args) {
         debugShowCheckedModeBanner: false,
         initialRoute: HomePage.routeName,
         routes: {
+          SignUp.routeName: (context) => const SignUp(),
           HomePage.routeName: (context) => const HomePage(),
           CategoryPage.routeName: (context) => const CategoryPage(),
           ProductDetail.routeName: (context) => const ProductDetail(),
