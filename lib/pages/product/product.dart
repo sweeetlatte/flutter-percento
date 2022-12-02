@@ -49,7 +49,7 @@ class ProductDetail extends StatelessWidget {
                     ),
                     Text(
                       data['description'],
-                      style: styleSmallText,
+                      style: styleSmallTextGrey,
                     ),
                   ],
                 ),
@@ -151,7 +151,7 @@ class ProductDetail extends StatelessWidget {
                           Container(
                             alignment: Alignment.center,
                             width: 26,
-                            height: 26,
+                            height: 25,
                             decoration: const BoxDecoration(
                               color: pNeutral0,
                             ),
@@ -173,7 +173,7 @@ class ProductDetail extends StatelessWidget {
                           Container(
                             alignment: Alignment.center,
                             width: 26,
-                            height: 26,
+                            height: 25,
                             decoration: const BoxDecoration(
                               color: pNeutral0,
                             ),
@@ -187,12 +187,12 @@ class ProductDetail extends StatelessWidget {
                   Expanded(
                       flex: 1,
                       child: Container(
-                        padding: const EdgeInsets.only(bottom: 3),
+                        padding: const EdgeInsets.only(bottom: 1.5),
                         margin: const EdgeInsets.only(left: 25),
                         decoration: const BoxDecoration(
                           border: Border(
                             bottom: BorderSide(
-                              width: 1.0,
+                              width: 0.5,
                               color: pNeutral1,
                             ),
                           ),

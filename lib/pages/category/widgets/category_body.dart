@@ -114,7 +114,7 @@ class _CategoryBodyState extends State<CategoryBody> {
                                   data[index].summary,
                                   textAlign: TextAlign.left,
                                   maxLines: 2,
-                                  style: styleSmallText,
+                                  style: styleSmallTextGrey,
                                 ),
                               ),
                               Row(

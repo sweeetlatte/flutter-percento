@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:percento/pages/auth/signin.dart';
 import 'package:percento/pages/category/category.dart';
 import 'package:percento/pages/home/home.dart';
 import 'package:percento/pages/product/product.dart';
@@ -14,8 +15,9 @@ void main(List<String> args) {
     ],
     child: MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: HomePage.routeName,
+      initialRoute: SignIn.routeName,
       routes: {
+        SignIn.routeName: (context) => const SignIn(),
         HomePage.routeName: (context) => const HomePage(),
         CategoryPage.routeName: (context) => const CategoryPage(),
         ProductDetail.routeName: (context) => const ProductDetail(),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+const pError = Color(0xFFCC6558);
 const pNeutral0 = Color(0xffffffff);
 const pNeutral1 = Color(0xfff0f0f0);
 const pNeutral2 = Color(0xff6b6a69);
@@ -35,7 +36,12 @@ const styleSubtitleGray = TextStyle(
   fontSize: 14,
 );
 
-const styleSmallText = TextStyle(
+const styleSmallTextBlack = TextStyle(
+  color: pNeutral3,
+  fontSize: 11,
+  height: 1.5,
+);
+const styleSmallTextGrey = TextStyle(
   color: pNeutral2,
   fontSize: 11,
   height: 1.5,
