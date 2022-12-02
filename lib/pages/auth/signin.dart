@@ -1,13 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:percento/config/const.dart';
+import 'package:percento/providers/auth.dart';
+import 'package:provider/provider.dart';
 
 class SignIn extends StatelessWidget {
   static const routeName = '/login';
-  const SignIn({super.key});
+  SignIn({super.key});
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    void handleSubmit() {
+      final email = _emailController.text;
+      final password = _passwordController.text;
+
+      if (email.isNotEmpty && password.isNotEmpty) {
+        Provider.of<AuthProvider>(context, listen: false)
+            .login(email, password);
+      }
+    }
+
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -40,9 +56,10 @@ class SignIn extends StatelessWidget {
                   ),
                 ),
               ),
-              const TextField(
+              TextField(
+                controller: _emailController,
                 cursorColor: pNeutral2,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Email',
                   labelStyle: TextStyle(color: pNeutral3),
                   focusedBorder: UnderlineInputBorder(
@@ -59,12 +76,13 @@ class SignIn extends StatelessWidget {
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.fromLTRB(0, 24, 0, 12),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 9, 0, 9),
                 child: TextField(
-                  obscureText: true,
+                  controller: _passwordController,
+                  // obscureText: true,
                   cursorColor: pNeutral2,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Password',
                     labelStyle: TextStyle(color: pNeutral3),
                     focusedBorder: UnderlineInputBorder(
@@ -91,12 +109,12 @@ class SignIn extends StatelessWidget {
                 ),
               ),
               ElevatedButton(
-                  onPressed: () {},
+                  onPressed: handleSubmit,
                   style: ElevatedButton.styleFrom(
                       backgroundColor: pNeutral3,
                       elevation: 1,
-                      padding:
-                          EdgeInsets.symmetric(vertical: 12, horizontal: 30)),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 12, horizontal: 30)),
                   child: const Text(
                     'SIGN IN',
                     style: TextStyle(
